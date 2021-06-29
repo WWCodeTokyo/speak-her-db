@@ -132,8 +132,9 @@
         "jaNameRequired": "Japanese name is required",
         "languagesRequired": "Please select spoken languages",
         "messageRequired": "A brief message is required",
-        "URLValid": "URL must be valid",
+        "URLValid": "Invalid URL: Please begin with http:// or https://",
         "valid": "Must provide a valid email",
-        "tooManyCharacters": "Please keep the input within {0} characters"
+        "tooManyCharacters": "Please keep the input within {0} characters",
+        "wrongSocialMediaUrl": "This URL doesn't match the expected social network"
     }
 }

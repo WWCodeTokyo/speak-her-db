@@ -83,10 +83,10 @@
     </v-row>
     <urls-input
       v-model="form.urls"
-      :fb-errors="urlErrors($v.form.urls.facebook)"
-      :linkedin-errors="urlErrors($v.form.urls.linkedin)"
-      :twitter-errors="urlErrors($v.form.urls.twitter)"
-      :website-errors="urlErrors($v.form.urls.website)"
+      :fb-errors="urlErrors($v.form.urls.facebook, 'facebook')"
+      :linkedin-errors="urlErrors($v.form.urls.linkedin, 'linkedin')"
+      :twitter-errors="urlErrors($v.form.urls.twitter, 'twitter')"
+      :website-errors="urlErrors($v.form.urls.website, 'website')"
       :prior-presentation-errors="urlErrors($v.form.urls.priorPresentation)"
       @touch-fb="delayTouch($v.form.urls.facebook)"
       @touch-linkedin="delayTouch($v.form.urls.linkedin)"
@@ -152,6 +152,7 @@ import {
   required, email, minLength, maxLength, url,
 } from 'vuelidate/lib/validators';
 import japanese from '@/validators/japanese';
+import { linkedinUrl, facebookUrl, twitterUrl } from '@/validators/social-media-urls';
 
 const isTrue = (value) => value;
 const touchMap = new WeakMap();
@@ -228,9 +229,18 @@ export default {
       },
       photo_url: { url },
       urls: {
-        facebook: { url },
-        twitter: { url },
-        linkedin: { url },
+        facebook: {
+          url,
+          facebookUrl,
+        },
+        twitter: {
+          url,
+          twitterUrl,
+        },
+        linkedin: {
+          url,
+          linkedinUrl,
+        },
         website: { url },
         priorPresentation: { url },
       },
@@ -382,10 +392,13 @@ export default {
       return errors;
     },
     // must pass in this.$v.form.[field]
-    urlErrors(field) {
+    urlErrors(field, urlName) {
       const errors = [];
       if (!field.$dirty) { return errors; }
       if (!field.url) { errors.push(this.$t('validations.URLValid')); }
+      if (urlName === 'linkedin' && !field.linkedinUrl) { errors.push(this.$t('validations.wrongSocialMediaUrl')); }
+      if (urlName === 'facebook' && !field.facebookUrl) { errors.push(this.$t('validations.wrongSocialMediaUrl')); }
+      if (urlName === 'twitter' && !field.twitterUrl) { errors.push(this.$t('validations.wrongSocialMediaUrl')); }
       return errors;
     },
     resetForm() {

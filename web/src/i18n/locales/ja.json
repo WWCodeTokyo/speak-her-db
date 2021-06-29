@@ -124,8 +124,9 @@
         "jaNameCharacters": "漢字\/全角かなでお名前を入力してください",
         "languagesRequired": "話せる言語を選択してください",
         "messageRequired": "スピーカーへの簡単なメッセージが必須です",
-        "URLValid": "URLは有効である必要があります",
+        "URLValid": "URLをhttp://、もしくは、https://から入力してください",
         "valid": "有効なメールアドレスを入力してください",
-        "tooManyCharacters": "{0}字以内で入力してください"
+        "tooManyCharacters": "{0}字以内で入力してください",
+        "wrongSocialMediaUrl": "こちらのURLはSNSのフォーマットに合っていません"
     }
 }
