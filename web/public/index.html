@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <script src="https://kit.fontawesome.com/30dc2f5444.js" crossorigin="anonymous"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
     <!-- Twitter card meta tags -->
     <meta name="twitter:card" content="summary_large_image">
@@ -32,7 +33,8 @@
         without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
     <!--dummy form so netlify knows what's coming-->
-    <form name="contact-speaker" netlify netlify-honeypot="bot-field" hidden>
+    <form name="contact-speaker" netlify netlify-honeypot="bot-field"
+      hidden data-netlify-recaptcha="true">
       <input type="text" name="name" />
       <input type="text" name="email" />
       <textarea name="message"></textarea>
